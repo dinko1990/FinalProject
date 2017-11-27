@@ -1,0 +1,7 @@
+Mirror in progress since Mon, 04 Sep 2017 09:56:06 .. please wait!
+httrack http://www.farsnews.com/ -O Desktop/Farsnews 
+To pause the engine: create an empty file named 'hts-stop.lock'
+PID=3931
+UID=0
+GID=0
+START=1504533366

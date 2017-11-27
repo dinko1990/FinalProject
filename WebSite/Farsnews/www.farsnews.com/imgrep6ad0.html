@@ -1,0 +1,547 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from www.farsnews.com/imgrep.php?nn=13960309001611 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Sep 2017 17:29:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>گازی که به خانه رواست به همسایه رایگان!</title><meta itemprop="name" content="محمدعلی رجبی گازی که به خانه رواست به همسایه رایگان!"/>
+<meta itemprop="description" content="بخاطر تخلفان پروند کرسنت، ایران پذیرفت که 14 ماه گاز رایگان به ترکیه صادر کند! "/>
+<meta itemprop="image" content="http://media.farsnews.com/Uploaded/Files/Images/1396/03/09/13960309001678_Test_PhotoFree.gif "/>
+
+<meta property="og:title" content="خبرگزاری فارس - گازی که به خانه رواست به همسایه رایگان!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="imgrep6ad0.html?nn=13960309001611" />
+<meta property="og:description" content="بخاطر تخلفان پروند کرسنت، ایران پذیرفت که 14 ماه گاز رایگان به ترکیه صادر کند!" />
+<meta property="og:site_name" content="خبرگزاری فارس" />
+<meta property="og:locale" content="fa_IR" />
+<meta property="og:article:author" content="خبرگزاری فارس" />
+<meta property="og:article:section" content="کاریکاتور کاریکاتور" />
+<meta property="og:image" content="http://media.farsnews.com/Uploaded/Files/Images/1396/03/09/13960309001678_Test_PhotoFree.gif" />
+
+<meta name="keywords" content="ترکیه،گاز،کرسنت،رجبی" />
+<meta name="description" content="بخاطر تخلفان پروند کرسنت، ایران پذیرفت که 14 ماه گاز رایگان به ترکیه صادر کند!" />
+<meta name="dc.Date" scheme="ISO8601" content="2017-05-30T17:03:25.55+3:30" />
+<meta name="dc.identifier" content="imgrep6ad0.html?nn=13960309001611" />
+<meta name="Fna.oid" content="13960309001611" />
+<link href="shares/CSS/bootstrap.css" rel="stylesheet" /><link href="shares/CSS/photo-Responsive.css" rel="stylesheet" />
+    <script src="shares/javascripts/jquery.js" type="text/javascript"></script>
+    <script src="shares/javascripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var no = new Array();
+
+        $(function () {
+            $('#rndList li').each(function () {
+                $(this).hide();
+            });
+            var min = 0;
+            var max = $('#rndList li').length;
+            while (no.length <= 5) {
+                var item = Math.floor(Math.random() * max);
+                if (jQuery.inArray(item, no) == -1) {
+                    no.push(item);
+                    $('#rndList li').eq(item).show();
+                }
+            }
+        });
+
+
+    </script>
+
+    
+    <link href="shares/javascripts/photo/modalbox.css" rel="stylesheet" />
+    <!--<script src="shares/javascripts/modal/colorbox.js"></script>-->
+    <script>
+        var timeout = 5000;
+        var isRunning = false;
+        var isSlided = false, isVisible = false;
+        var timer;
+        var distanceTop = 0;
+
+        $(document).ready(function () {
+            $("#dlthem").mouseover(function () {
+                $('#downloadtoolkit').show();
+            });
+            $("#dlthem").mouseleave(function () {
+                $('#downloadtoolkit').hide();
+            });
+            $(".gallery, .galleryindex").click(function () {
+                isVisible = true;
+                clearInterval(timer);
+                imagepreview($(this));
+                if (isSlided) setSlideshow();
+                return false;
+            });
+            $(".phviewnext").click(function () {
+                clearInterval(timer);
+                transition(1);
+                setSlideshow();
+            });
+            $(".phviewprev").click(function () {
+                clearInterval(timer);
+                transition(-1);
+                setSlideshow();
+            });
+            $('.phviewclosebtn').click(function () {
+                isVisible = false;
+                clearInterval(timer);
+                $('#modal').css('display', 'none');
+                $(".phitmpaneitems").css("display", "block");
+                $(window).scrollTop(distanceTop);
+            });
+            $('#slideshow').click(function () {
+                if (isSlided) {
+                    isSlided = false;
+                    $(this).attr('src', 'shares/javascripts/photo/play.png');
+                    clearInterval(timer);
+                }
+                else {
+                    isSlided = true;
+                    $(this).attr('src', 'shares/javascripts/photo/pause.png');
+                    setSlideshow();
+                }
+            });
+            $('.modal').click(function (e) {
+                var $box = $('.modalcontent');
+                if (e.target.className !== 'modalcontent' && !$.contains($box[0], e.target)) {
+                    $('.phviewclosebtn').click();
+                }
+            });
+        });
+        $(document).keydown(function (e) {
+            if (e.keyCode == 37) {
+                $(".phviewprev").click();
+                return false;
+            }
+            else if (e.keyCode == 39) {
+                $(".phviewnext").click();
+                return false;
+            }
+            else if (e.keyCode == 27) {
+                $('.phviewclosebtn').click();
+                return false;
+            }
+        });
+        function setSlideshow() {
+            if (isSlided && isVisible) timer = setInterval(function () { transition(1) }, timeout);
+        }
+        function transition(step) {
+            if (isVisible) {
+                var currentId = ($('#currentindex').html() * 1) + step;
+                if (currentId > ($('#totalofitems').html() * 1)) currentId = 1;
+                if (currentId < 1) currentId = ($('#totalofitems').html() * 1);
+
+                imagepreview($('#ind6x' + currentId));
+            }
+        }
+        function imagepreview(object) {
+             distanceTop = $(document).scrollTop();
+
+            if (!isRunning) {
+                isRunning = true;
+                $(window).scrollTop(0);
+                $('#modal').css('display', 'block');
+                var loading = "<div class=\"loading\"> <img src=\"/shares/img/loading.gif\" />&nbsp;<span>در حال بارگذاری تصویر</span></div>";
+
+                $(".phviewimage").append(loading);
+
+                if ($(object).attr('href').indexOf("_PhotoL") > 0) {
+                    $("<img/>").attr("src", $(object).attr('href')).load(function () {
+                        var width = this.width;
+                        var height = this.height;
+                        if (height > width) {
+                            $('#phviewimage').css({ "opacity": "0.0", "width": "auto" }).attr('src', $(object).attr('href'));
+                            $(".modalcontent").css({ "max-width": "490px" });
+                        } else {
+                            $('#phviewimage').css({ "opacity": "0.0", "width": "100%" }).attr('src', $(object).attr('href'));
+                            $(".modalcontent").css({ "max-width": "690px" });
+                        }
+
+                        if (height > 0) {
+                            $(".phviewimage .loading").remove();
+                            $("#phviewimage").css("opacity", "1");
+                            isRunning = false;
+                        }
+                    });
+                }
+                else {
+                    $("<img/>").attr("src", $(object).attr('href')).load(function () {
+                        var width = this.width;
+                        var height = this.height;
+                        if (height > width) {
+                            $('#phviewimage').css({ "opacity": "0.0", "width": "auto" }).attr('src', $(object).attr('href'));
+                            $(".modalcontent").css({ "max-width": "550px" });
+                        } else if (width > height) {
+                            $('#phviewimage').css({ "opacity": "0.0", "width": "100%" }).attr('src', $(object).attr('href'));
+                            $(".modalcontent").css({ "max-width": "1140px" });
+                        }
+                        else {
+                            $('#phviewimage').css({ "opacity": "0.0", "width": "auto" }).attr('src', $(object).attr('href'));
+                            $(".modalcontent").css({ "max-width": "770px" });
+                        }
+
+                        if (height > 0) {
+                            $(".phviewimage .loading").remove();
+                            $("#phviewimage").css("opacity", "1");
+                            isRunning = false;
+                        }
+                    });
+                }
+
+
+                //setTimeout(function () {
+                //    $("#phviewimage").css("opacity", "1");
+                //    isRunning = false;
+                //}, 400);
+
+                //$("#phviewimage").animate({
+                //    opacity: 1.0,
+                //}, 200, function () {
+                //    isRunning = false;
+                //});
+
+                $('#phviewtitle').fadeOut('fast', function () { $('#phviewtitle').html($(object).attr('title')).fadeIn('fast'); });
+                $('.phviewpaging .selected').removeClass();
+
+                var thisId = $(object).attr('id').substr(5);
+                var element = '.phviewpaging #index' + thisId;
+                $(element).addClass('selected');
+                $('#currentindex').html(thisId);
+                $(".phitmpaneitems").css("display", "none");
+            }
+        }
+    </script>
+
+    
+    <style>
+        .ig-b- {
+            display: inline-block;
+        }
+
+            .ig-b-:hover {
+                background-position: 0 -60px;
+            }
+
+            .ig-b-:active {
+                background-position: 0 -120px;
+            }
+
+        .ig-b-24 {
+            width: 24px;
+            height: 24px;
+            background: url(http://badges.instagram.com/static/images/ig-badge-sprite-24.png) no-repeat 0 0;
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+            .ig-b-24 {
+                background-image: url(http://badges.instagram.com/static/images/ig-badge-sprite-24@2x.png);
+                background-size: 60px 178px;
+            }
+        }
+    </style>
+<title>
+	گازی که به خانه رواست به همسایه رایگان!
+</title></head>
+
+<body>
+
+
+    
+    <div class="modal" id="modal">
+        
+        <div class="modalcontent">
+            <div class="phviewlogo">
+                <img src="shares/img/photodislogo.jpg" />
+            </div>
+            <div class="phviewpaging">
+                <a href="http://media.farsnews.com/media/Uploaded/Files/Images/1396/03/09/13960309001680636317605814085271_84627_PhotoT.jpg" title="گازی که به خانه رواست به همسایه رایگان!" id="index1" class="galleryindex">&nbsp;1</a> 
+            </div>
+            <div class="phviewmainframe">
+                <div class="phviewimage">
+                    <!--<div id="phviewimage"></div>-->
+                    <div id="phviewimageframe">
+                        <img src="#" id="phviewimage" />
+                        <div class="phviewnext"></div>
+                        <div class="phviewprev"></div>
+
+                        
+                        <div class="phviewclosebtn"></div>
+                    </div>
+
+                    <div class="phviewslideshowbtn"></div>
+                    <div class="phviewcounter">
+                        <img id="slideshow" src="shares/javascripts/photo/play.png" />
+                        <span id="currentindex"></span>/<span id="totalofitems">1</span>
+                    </div>
+                </div>
+                <div class="phviewtitle">
+                    <div id="phviewtitle"></div>
+                    <div class="phprviwextrainfo">
+                        محمدعلی رجبی 1396/03/09 - 17:03
+                    </div>
+                </div>
+                <div class="phviewsocialnetworklinks">
+                    
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="shares/img/photologo.png" />
+            </a>
+        </div>
+        <div class="logobtmbar hidden-xs hidden-sm">
+            <div class="lngsitelinks col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <a href='http://turkish.farsnews.com/' target="_blank">Türkçe</a> - 
+                    <a href='http://english.farsnews.com/' target="_blank">English</a> - 
+                    <a href='http://arabic.farsnews.com/' target="_blank">العربية</a> - 
+                    <a href='http://af.farsnews.com/' target="_blank">افغانستان</a> - 
+                    <a href='index.html' target="_blank">فارسی</a>
+            </div>
+            <div class="dates col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                دوشنبه ۱۳ شهریور ۱۳۹۶&nbsp;-&nbsp;۲۲:۰۱
+            </div>
+        </div>
+
+        
+    <div class="menubar">
+        <span id="ctl00_ContentPlaceHolder1_topmenuLinks"><div class="drawpageslinks"><a id="p0" href="drawing.html">صفحه اول گرافیک و کاریکاتور</a><span> | </span><a id="p1" href="drawing385b.html?id=522">گرافیک</a><span> | </span><a id="p2" href="drawing02a3.html?id=523">کاریکاتور</a><span> | </span><a id="p3" href="drawing02a3.html?id=523">رویدادهای تجسمی</a><span> | </span><a href="index.html">صفحه اول خبرگزاری</a></div></span>
+        <div class="archiveform visible-xs visible-sm">
+            <div class="sociallnk">
+                <ul>
+                    <li>
+                        <a href="http://instagram.com/photofars" target="_blank">
+                            <img src="shares/img/Multimedia-instgram.png" /></a></li>
+                </ul>
+            </div>
+            <form action="http://www.farsnews.com/photo/archive" method="get">
+                <label class="dayselect">
+                    <select name="day">
+                        <option value='01'>۱</option><option value='02'>۲</option><option value='03'>۳</option><option value='04'>۴</option><option value='05'>۵</option><option value='06'>۶</option><option value='07'>۷</option><option value='08'>۸</option><option value='09'>۹</option><option value='10'>۱۰</option><option value='11'>۱۱</option><option value='12'>۱۲</option><option value='13' selected>۱۳</option><option value='14'>۱۴</option><option value='15'>۱۵</option><option value='16'>۱۶</option><option value='17'>۱۷</option><option value='18'>۱۸</option><option value='19'>۱۹</option><option value='20'>۲۰</option><option value='21'>۲۱</option><option value='22'>۲۲</option><option value='23'>۲۳</option><option value='24'>۲۴</option><option value='25'>۲۵</option><option value='26'>۲۶</option><option value='27'>۲۷</option><option value='28'>۲۸</option><option value='29'>۲۹</option><option value='30'>۳۰</option><option value='31'>۳۱</option>
+                    </select>
+                </label>
+                <label class="dayselect">
+                    <select name="mon">
+                        <option value="01">۱</option><option value="02">۲</option><option value="03">۳</option><option value="04">۴</option><option value="05">۵</option><option value="06" selected="selected">۶</option><option value="07">۷</option><option value="08">۸</option><option value="09">۹</option><option value="10">۱۰</option><option value="11">۱۱</option><option value="12">۱۲</option>
+                    </select>
+                </label>
+                <label class="yerselect">
+                    <select name="yer">
+                        <option value="81">&nbsp;۱۳۸۱&nbsp;</option><option value="82">&nbsp;۱۳۸۲&nbsp;</option><option value="83">&nbsp;۱۳۸۳&nbsp;</option><option value="84">&nbsp;۱۳۸۴&nbsp;</option><option value="85">&nbsp;۱۳۸۵&nbsp;</option><option value="86">&nbsp;۱۳۸۶&nbsp;</option><option value="87">&nbsp;۱۳۸۷&nbsp;</option><option value="88">&nbsp;۱۳۸۸&nbsp;</option><option value="89">&nbsp;۱۳۸۹&nbsp;</option><option value="90">&nbsp;۱۳۹۰&nbsp;</option><option value="91">&nbsp;۱۳۹۱&nbsp;</option><option value="92">&nbsp;۱۳۹۲&nbsp;</option><option value="93">&nbsp;۱۳۹۳&nbsp;</option><option value="94">&nbsp;۱۳۹۴&nbsp;</option><option value="95">&nbsp;۱۳۹۵&nbsp;</option><option value="96" selected="selected">&nbsp;۱۳۹۶&nbsp;</option>
+                    </select>
+                </label>
+                <input type="submit" value="آرشیو" />
+            </form>
+        </div>
+
+        <div class="qsearchform col-lg-2 col-md-9">
+            <form action="http://search.farsnews.com/result.aspx" method="post">
+                <input type="hidden" id="datetype" name="datetype" value="1" />
+                <input type="hidden" id="datestring" name="datestring" value="13 شهریور 1396" />
+                <input type="hidden" id="searchfield" name="searchfield" value="0" />
+                <input type="hidden" id="searchcategory" name="searchcategory" value="114" />
+                <input type="hidden" id="datetext" name="datetext" value="1396/06" />
+                <input type="text" name="srchtxt" id="srchtxt" />
+                <input type="image" src="shares/img/srchbtn.svg" id="searchbtnimg" />
+            </form>
+        </div>
+        <div class="archiveform col-lg-3 col-md-3 visible-md visible-lg" style="display: none;">
+            <div class="sociallnk">
+                <ul>
+                    <li>
+                        <a href="http://instagram.com/photofars" target="_blank">
+                            <img src="shares/img/Multimedia-instgram.png" /></a>
+                    </li>
+                </ul>
+            </div>
+            <form action="http://www.farsnews.com/photo/archive" method="get">
+                <label class="dayselect">
+                    <select name="day">
+                        <option value='01'>۱</option><option value='02'>۲</option><option value='03'>۳</option><option value='04'>۴</option><option value='05'>۵</option><option value='06'>۶</option><option value='07'>۷</option><option value='08'>۸</option><option value='09'>۹</option><option value='10'>۱۰</option><option value='11'>۱۱</option><option value='12'>۱۲</option><option value='13' selected>۱۳</option><option value='14'>۱۴</option><option value='15'>۱۵</option><option value='16'>۱۶</option><option value='17'>۱۷</option><option value='18'>۱۸</option><option value='19'>۱۹</option><option value='20'>۲۰</option><option value='21'>۲۱</option><option value='22'>۲۲</option><option value='23'>۲۳</option><option value='24'>۲۴</option><option value='25'>۲۵</option><option value='26'>۲۶</option><option value='27'>۲۷</option><option value='28'>۲۸</option><option value='29'>۲۹</option><option value='30'>۳۰</option><option value='31'>۳۱</option>
+                    </select>
+                </label>
+                <label class="dayselect">
+                    <select name="mon">
+                        <option value="01">۱</option><option value="02">۲</option><option value="03">۳</option><option value="04">۴</option><option value="05">۵</option><option value="06" selected="selected">۶</option><option value="07">۷</option><option value="08">۸</option><option value="09">۹</option><option value="10">۱۰</option><option value="11">۱۱</option><option value="12">۱۲</option>
+                    </select>
+                </label>
+                <label class="yerselect">
+                    <select name="yer">
+                        <option value="81">&nbsp;۱۳۸۱&nbsp;</option><option value="82">&nbsp;۱۳۸۲&nbsp;</option><option value="83">&nbsp;۱۳۸۳&nbsp;</option><option value="84">&nbsp;۱۳۸۴&nbsp;</option><option value="85">&nbsp;۱۳۸۵&nbsp;</option><option value="86">&nbsp;۱۳۸۶&nbsp;</option><option value="87">&nbsp;۱۳۸۷&nbsp;</option><option value="88">&nbsp;۱۳۸۸&nbsp;</option><option value="89">&nbsp;۱۳۸۹&nbsp;</option><option value="90">&nbsp;۱۳۹۰&nbsp;</option><option value="91">&nbsp;۱۳۹۱&nbsp;</option><option value="92">&nbsp;۱۳۹۲&nbsp;</option><option value="93">&nbsp;۱۳۹۳&nbsp;</option><option value="94">&nbsp;۱۳۹۴&nbsp;</option><option value="95">&nbsp;۱۳۹۵&nbsp;</option><option value="96" selected="selected">&nbsp;۱۳۹۶&nbsp;</option>
+                    </select>
+                </label>
+                <input type="submit" value="آرشیو" />
+            </form>
+        </div>
+
+    </div>
+    <div class="phitmmainframe col-md-12 col-sm-12 col-xs-12">
+        <div class="phitmtitle col-lg-11 col-sm-11 col-md-11">گازی که به خانه رواست به همسایه رایگان!</div><div class="phitmlead col-lg-11 col-sm-11 col-md-11">بخاطر تخلفان پروند کرسنت، ایران پذیرفت که 14 ماه گاز رایگان به ترکیه صادر کند!</div><div class="phitmextinfo col-lg-11 col-sm-11 col-md-11"><div class="phitmheadinfo"><div class="phitmgrafer">طرح: محمدعلی رجبی</div><div class="phitmdt">1396/03/09 - 17:03 <a href="http://pics.farsnews.com/?nn=13960309001611"><img id="dlthem" src="shares/img/downloadicon.png" /></a><div class="downloadtoolkit" id="downloadtoolkit">دریافت کل گزارش تصویری</div></div></div><!--<div class="sociallnk"><ul><li><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></li><li><div class="g-plusone" data-size="medium"></div></li><div style="clear: both;"></div></ul></div>--><div style="clear: both;"></div></div><div class="phitmpaneitems col-md-12 col-sm-12 col-xs-12"></tr><tr><div class="phitmpanepic col-md-3 col-sm-4 col-xs-4 container"><div class="phitmpanepicimg"><a href="http://media.farsnews.com/media/Uploaded/Files/Images/1396/03/09/13960309001680636317605814085271_84627_PhotoT.jpg" title="گازی که به خانه رواست به همسایه رایگان!" id="ind6x1" class="gallery"><img width="210" height="140" class="" src='http://media.farsnews.com/media/Uploaded/Files/Images/1396/03/09/13960309001680636317605814085271_84627_PhotoU.jpg' alt="گازی که به خانه رواست به همسایه رایگان!" title="گازی که به خانه رواست به همسایه رایگان!" /></a></div></div></div>
+        <div class="clearboth"></div>
+        <div style="height: 72px;"></div>
+    </div>
+
+    
+
+
+    </div>
+    <div class="footerpane col-md-12 col-sm-12 col-xs-12">
+        <div class="footerpaneTop hidden-xs">
+            <div class="newsGroup container">
+                <div class="newsGroupHeader">
+                    <a href="index.html">خبرگزاری فارس</a>
+                    <div class="footerSocial visible-xs">
+                        <ul>
+                            <li>
+                                <a href="rsslinks-2.html" target="_blank">
+                                    <img src="shares/img/Footer/rss.png" alt="RSS" /></a></li>
+                            
+                            <li>
+                                <a href="#">
+                                    <img src="shares/img/Footer/gplus.png" alt="Google Plus" /></a></li>
+                            
+                            <li><a href="http://instagram.com/photofars" target="_blank">
+                                <img src="shares/img/Footer/ins.png" alt="Instagram" /></a></li>
+
+                            
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="newsGroupRul">
+                </div>
+                <div class="footerService">
+                    <div>
+                        <ul>
+                            <li><a href="allstories.html" target="_blank">عناوین کل اخبار</a></li>
+                            <li><a href="topnews.html" target="_blank">اخبار برگزيده</a></li>
+                            <li><a href="http://widgets.farsnews.com/leagues/" target="_blank">جدول فوتبال</a></li>
+                            <li><a href="http://widgets.farsnews.com/currency/" target="_blank">طلا، سکه و ارز</a></li>
+                            <li><a href="http://widgets.farsnews.com/bource/" target="_blank">شاخص بورس</a></li>
+                            <li><a href="http://widgets.farsnews.com/cars/" target="_blank">قیمت خودرو</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul id="rndList">
+                            <li><a href="social.html" target="_blank">اجتماعي</a></li>
+                            <li><a href="economy.html" target="_blank">اقتصادي</a></li>
+                            <li><a href="world.html" target="_blank">بين الملل</a></li>
+                            <li><a href="politics.html" target="_blank">سياسي</a></li>
+                            <li><a href="foreign_policy.html" target="_blank">سياست خارجي</a></li>
+                            <li><a href="universities.html" target="_blank">دانشگاه</a></li>
+                            <li><a href="culture.html" target="_blank">فرهنگی</a></li>
+                            <li><a href="http://sport.farsnews.com/" target="_blank">ورزشی</a></li>
+                            <li><a href="province.html" target="_blank">استانها</a></li>
+                            <li><a href="MultiMedia.html" target="_blank">صوت وتصویر</a></li>
+                            <li><a href="history.html" target="_blank">تاریخ</a></li>
+                            <li><a href="newsvca7d.html?srv=462" target="_blank">خودرو</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <ul>
+                            <li><a href="photo.html" target="_blank">گزارش تصویری</a></li>
+                            <li><a href="photo/interactivity.html" target="_blank">تصاویر دریافتی</a></li>
+                            <li><a href="photo/provinces.html" target="_blank">تصاویر استانها</a></li>
+                            <li><a href="Graphic.html" target="_blank">گرافیک</a></li>
+                            <li><a href="Graphic/Cartoon.html" target="_blank">کاریکاتور</a></li>
+                            <li><a href="MultiMedia/video.html" target="_blank">فیلم</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div>
+                        <ul>
+                            <li><a href="http://special.farsnews.com/" target="_blank">اخبار ویژه</a></li>
+                            <li><a href="iraq.html" target="_blank">تحولات عراق</a></li>
+                            <li><a href="Syria.html" target="_blank">تحولات سوریه</a></li>
+                            <li><a href="resistance.html" target="_blank">حماسه و مقاومت</a></li>
+                            <li><a href="lifestyle.html" target="_blank">دانستنی ها</a></li>
+                            <li><a href="http://worldcup.farsnews.com/" target="_blank">جام جهانی 2014</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <ul>
+                            <li><a href="http://lms.farsnews.com/" target="_blank">آموزش و پژوهش</a></li>
+                            <li><a href="publications.html" target="_blank">انتشارات</a></li>
+                            <li><a href="viewpoint.html" target="_blank">دیدگاه</a></li>
+                            <li><a href="Regional_Offices.html" target="_blank">دفاتر منطقه ای</a></li>
+                            <li><a href="http://madreseh.farsnews.com/" target="_blank">مدرسه</a></li>
+                            <li><a href="Cyberspace.html" target="_blank">فضای مجازی</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footerpaneRul hidden-xs">
+            </div>
+
+            <div class="otherServices container hidden-xs">
+                <div class="otherSerUl">
+                    <ul>
+                        <li><a href="mailto:info@farsnews.ir" target="_blank">ارتباط با ما</a></li>
+                        <li><a href="aboutus.html" target="_blank">سخن ما</a></li>
+                        <li><a href="javascript:void();" onclick="window.open('comments/ads.html','','height=520,width=630');">تبلیغات در سایت</a></li>
+                        <li><a href="javascript:void();" onclick="window.open('comments/problem.html','','height=450,width=400');">اعلام مشکل سایت</a></li>
+                    </ul>
+
+                </div>
+                <div class="footerSocial">
+                    <ul>
+                        <li>
+                            <a href="rsslinks-2.html" target="_blank">
+                                <img src="shares/img/Footer/rss.png" alt="RSS" /></a></li>
+                        
+                        <li>
+                            <a href="#">
+                                <img src="shares/img/Footer/gplus.png" alt="Google Plus" /></a></li>
+                        
+                        <li><a href="http://instagram.com/photofars" target="_blank">
+                            <img src="shares/img/Footer/ins.png" alt="Instagram" /></a></li>
+
+                        
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <div class="container" style="float: none;">
+                <div class="footerLogo">
+                    <img src="shares/img/Footer/Logo.png" alt="Fars News Agency" />
+                </div>
+                <div class="footerFarsName">
+                    <div>&nbsp;خبرگزاری فارس</div>
+                    <div>Fars News Agency</div>
+                </div>
+                <div class="footerAlert">
+                    <ul>
+                        <li>نقل مطالب با ذکر منبع بلامانع است.</li>
+                        <li>&copy;2017 Fars News Agency. All Rights Reserved</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        //<!--
+        $(".photopageslinks a").removeClass('selected');
+        $('#p0').addClass('selected');
+        //-->
+    </script>
+</body>
+
+<!-- Mirrored from www.farsnews.com/imgrep.php?nn=13960309001611 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Sep 2017 17:29:54 GMT -->
+</html>
